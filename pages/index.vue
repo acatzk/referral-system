@@ -9,13 +9,13 @@
           <div class="space-y-4">
             <div class="space-y-2">
               <label class="text-sm text-gray-600">Email / Slot Code</label>
-              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200" 
+              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200 focus:border-gray-100" 
                       placeholder="Enter Email" 
                       type="text" />
             </div>
             <div class="space-y-2">
               <label class="text-sm text-gray-600">Password</label>
-              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200" 
+              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200 focus:border-gray-100" 
                       placeholder="Enter Password" 
                       type="password" />
             </div>
