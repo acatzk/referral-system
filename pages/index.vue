@@ -43,7 +43,7 @@
 <script>
   export default {
     head: {
-      title: 'Login - Grace wellness'
+      title: 'Login - Grace wealthness'
     }
   }
 </script>
