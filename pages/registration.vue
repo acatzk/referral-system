@@ -19,7 +19,7 @@
           <div class="space-y-2">
             <label class="text-sm text-gray-600">Country *</label>
             <select class="text-sm w-full py-2 px-3 border border-gray-300 rounded shadow-inner focus:outline-none focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200 bg-white focus:border-gray-100">
-              <option>Philippines</option>
+              <option v-for="(country, i) in countries" :key="i">{{ country }}</option>
             </select>
           </div>
           <div class="space-y-2">
@@ -55,9 +55,25 @@
 </template>
 
 <script>
+  import countries from '~/static/countries.json'
   export default {
     head: {
       title: 'Registration - Grace wealthness'
+    },
+    data () {
+      return {
+        countries: []
+      }
+    },
+    methods: {
+      countriesData () {
+        countries.forEach((element) => {
+          this.countries.push(element.nationality)
+        })
+      }
+    },
+    created () {
+      this.countriesData()
     }
   }
 </script>
