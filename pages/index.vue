@@ -24,7 +24,7 @@
             <nuxt-link to="/forgot-password" class="text-sm text-gray-500 hover:underline">Forgot password?</nuxt-link>
           </div>
           <div class="space-y-2">
-            <button @click.prevent class="text-sm font-medium w-full bg-green-500 py-2 border-none text-white rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 uppercase on ease-in-out duration-200">
+            <button @click.prevent="onLogin" class="text-sm font-medium w-full bg-green-500 py-2 border-none text-white rounded focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 uppercase on ease-in-out duration-200">
               Login
             </button>
             <nuxt-link to="/registration" @click.prevent class="inline-block text-center text-sm font-medium w-full border border-green-500 py-2 text-green-500 rounded focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 uppercase hover:bg-green-50 focus:outline-none transiton ease-in-out duration-200">
@@ -44,6 +44,11 @@
   export default {
     head: {
       title: 'Login - Grace wealthness'
+    },
+    methods: {
+      onLogin () {
+        this.$router.push('/member')
+      }
     }
   }
 </script>
