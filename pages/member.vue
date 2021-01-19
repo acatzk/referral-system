@@ -1,9 +1,14 @@
 <template>
-  <div>
-    <TheHeader />
-    <main>
-      <nuxt-child />
-    </main>
+  <div class="flex min-h-screen h-screen">
+    <div class="w-72 bg-white border-r border-gray-200">
+      <TheSideNav />
+    </div>
+    <div class="flex-grow flex flex-col">
+      <TheHeader />
+      <div class="flex-grow">
+        <nuxt-child />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -14,7 +19,8 @@
       titleTemplate: '%s - Grace wealthness'
     },
     components: {
-      TheHeader: () => import('~/components/TheHeader')
+      TheHeader: () => import('~/components/TheHeader'),
+      TheSideNav: () => import('~/components/TheSideNav')
     }
   }
 </script>
