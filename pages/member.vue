@@ -3,9 +3,9 @@
     <div class="w-72 bg-white border-r border-gray-200">
       <TheSideNav />
     </div>
-    <div class="flex-grow flex flex-col">
+    <div class="flex-grow flex flex-col overflow-y-hidden">
       <TheHeader />
-      <div class="flex-grow">
+      <div class="flex-grow overflow-y-auto">
         <nuxt-child />
       </div>
     </div>
