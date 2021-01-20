@@ -1,9 +1,7 @@
 <template>
   <div class="flex items-center justify-between bg-green-500 py-1 px-4">
     <div class="flex items-center space-x-6">
-      <button class="focus:outline-none rounded focus:ring-2 ring-green-400 p-1">
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h7"></path></svg>
-      </button>
+      <slot name="toggle-button"></slot>
       <div>
         <img class="h-10" src="@/assets/images/xample-logo.png" alt="avatar" />
       </div>
