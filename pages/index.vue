@@ -3,7 +3,7 @@
     <div class="container m-auto max-w-none sm:max-w-md h-screen sm:h-auto bg-white rounded-none sm:rounded-lg shadow">
       <div class="px-6 flex flex-col">
         <div class="mt-5 flex-shrink-0 flex justify-center">
-          <img class="h-40" src="@/assets/images/xample-logo.png" alt="avatar" />
+          <img class="h-72" src="~/assets/images/logo.png" alt="avatar" />
         </div>
         <form class="py-8 space-y-2">
           <div class="space-y-4">
