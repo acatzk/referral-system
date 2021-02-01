@@ -3,7 +3,7 @@
     <div class="flex items-center space-x-3">
       <slot name="toggle-button"></slot>
       <div>
-        <nuxt-link to="/member" class="font-semibold text-green-50 text-lg">Wealthness Grace</nuxt-link>
+        <nuxt-link to="/member" class="font-semibold text-green-50 text-lg clamp-1">Wealthness Grace</nuxt-link>
       </div>
     </div>
     <div>
