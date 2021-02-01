@@ -1,9 +1,9 @@
 <template>
   <div class="flex items-center justify-between bg-green-500 py-1 px-4">
-    <div class="flex items-center space-x-6">
+    <div class="flex items-center space-x-3">
       <slot name="toggle-button"></slot>
       <div>
-        <img class="h-10" src="@/assets/images/xample-logo.png" alt="avatar" />
+        <nuxt-link to="/member" class="font-semibold text-green-50 text-lg">Wealthness Grace</nuxt-link>
       </div>
     </div>
     <div>
@@ -12,4 +12,4 @@
       </button>
     </div>
   </div>
-</template>
+</template> 
