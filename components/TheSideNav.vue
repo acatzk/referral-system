@@ -5,8 +5,8 @@
         <img class="h-8 w-8 fill-current md:h-28 md:w-28 rounded-full border" src="https://bvusolution.com/images/img-profile-default.jpg" alt="avatar">
       </div>
       <div class="hidden md:block text-center">
-        <a href="#" class="font-medium text-base text-green-600">Joseph Beronio</a>
-        <a href="#" class="text-sm text-gray-400 hover:underline">josephberonio@gmail.com</a>
+        <a href="#" class="block font-medium text-lg text-green-600 pt-1">Joseph Beronio</a>
+        <a href="#" class="block text-sm text-gray-400 hover:underline">josephberonio@gmail.com</a>
       </div>
     </div>
     <ul class="divide-y divide-gray-50 py-5">
