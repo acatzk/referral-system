@@ -13,8 +13,20 @@
           </button>
         </template>
       </TheHeader>
-      <div class="flex-grow overflow-y-auto">
-        <nuxt-child />
+      <div class="flex-grow overflow-y-auto px-4">
+        <div class="flex h-screen" v-if="!isValid">
+          <div class="container m-auto max-w-lg">
+            <div class="rounded-lg shadow bg-white px-4 py-6">
+              <div class="flex items-center flex-col space-y-3">
+                <h1>We have detected that you don't have a slot yet.</h1>
+                <button class="block py-2 px-4 bg-green-500 rounded-md focus:outline-none hover:opacity-80 focus:bg-green-600">
+                  <span class="text-white">Add Slot</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <nuxt-child v-else/>
       </div>
     </div>
   </div>
@@ -23,7 +35,7 @@
 <script>
   export default {
     head: {
-      title: '',
+      title: 'No Slot',
       titleTemplate: '%s - Grace wealthness'
     },
     components: {
@@ -32,7 +44,8 @@
     },
     data () {
       return {
-        toggle: true
+        toggle: true,
+        isValid: false
       }
     }
   }
