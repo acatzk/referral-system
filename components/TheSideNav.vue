@@ -1,29 +1,30 @@
 <template>
   <div class="flex flex-col items-center py-8 space-y-2">
-    <div class="flex-shrink-0 px-4">
-      <img class="h-28 w-28 rounded-full border" src="https://bvusolution.com/images/img-profile-default.jpg" alt="avatar">
+    <div class="flex-shrink-0 px-0 md:px-4">
+      <img class="h-8 w-8 fill-current md:h-28 md:w-28 rounded-full border" src="https://bvusolution.com/images/img-profile-default.jpg" alt="avatar">
     </div>
-    <div class="text-center space-y-4">
-      <div>
+    <div class="space-y-4">
+      <div class="text-center hidden md:block">
         <span class="font-medium text-base text-green-600">Joseph Beronio</span>
         <span class="text-sm text-gray-400">josephberonio@gmail.com</span>
       </div>
       <ul class="divide-y divide-gray-50">
         <li v-for="(link, i) in links" 
             :key="i" 
-            @click.prevent="setlink = link.title">
+            @click.prevent="setlink = link.title"
+            class="hover:bg-green-50">
           <nuxt-link  :to="link.to"
-                      class="flex items-center space-x-6 cursor-pointer py-3 pl-10 hover:bg-gray-100 transition ease-in-out duration-150"
-                      :class="`${link.title === setlink ? 'border-green-500' : 'border-transparent opacity-90'} border-l-4`">
+                      class="flex items-center space-x-6 cursor-pointer py-3 pl-0 md:pl-10 transition ease-in-out duration-150"
+                      :class="`${link.title === setlink ? 'border-green-500' : 'border-transparent opacity-90'} border-l-0 md:border-l-4`">
             <span v-html="`${link.title === setlink ? link.iconActive : link.icon}`" :class="`${link.title === setlink ? 'text-green-500' : 'text-gray-500'}`"></span>
-            <span :class="`${link.title === setlink ? 'text-green-500 font-normal' : 'text-gray-500 font-light'}`">{{ link.title }}</span>
+            <span :class="[`${link.title === setlink ? 'text-green-500 font-normal' : 'text-gray-500 font-light'}`, `hidden md:block`]">{{ link.title }}</span>
           </nuxt-link>
         </li>
-        <li class="flex items-center space-x-6 cursor-pointer py-3 pl-11 hover:bg-gray-200 transition ease-in-out duration-150" @click.prevent="onLogout">
+        <li class="flex items-center space-x-6 cursor-pointer py-3 pl-0 md:pl-11 hover:bg-green-50 transition ease-in-out duration-150" @click.prevent="onLogout">
           <span>
-            <svg class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 512 512"><path d="M506 244l-55-39c-10-7-24 0-24 12v78c0 12 14 19 24 12l55-39c8-6 8-18 0-24z"/><path d="M430 352c-7-4-16-1-20 6a204 204 0 110-204 15 15 0 0026-15 234 234 0 100 234c4-7 2-17-6-21z"/><path d="M164 241a15 15 0 100 30h233v-30H164z"/></svg>
+            <svg class="w-6 h-6 fill-current text-gray-500" viewBox="0 0 512 512"><path d="M0 121v248c0 34 28 62 62 62h201c34 0 62-28 62-62v-40a12 12 0 10-25 0v40c0 21-17 38-37 38H62c-21 0-38-17-38-38V121c0-21 17-38 38-38h201c20 0 37 17 37 38v40a12 12 0 1025 0v-40c0-34-28-62-62-62H62C28 59 0 87 0 121z"/><path d="M385 338l9 3 9-3 84-84c4-5 4-13 0-18l-84-83c-5-5-13-5-18 0s-4 12 0 17l63 63H219a12 12 0 100 24h229l-63 63c-4 5-4 13 0 18z"/></svg>
           </span>
-          <span class="text-gray-500 font-light">Logout</span>
+          <span class="text-gray-500 font-light hidden md:block">Logout</span>
         </li>
       </ul>
     </div>
