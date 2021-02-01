@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-screen h-screen">
-    <div class="w-12 md:w-72 bg-white border-r border-gray-200" v-show="toggle">
+    <div class="w-14 md:w-72 bg-white border-r border-gray-200 flex-shrink-0" v-show="toggle">
       <TheSideNav />
     </div>
     <div class="flex-grow flex flex-col overflow-y-hidden">
