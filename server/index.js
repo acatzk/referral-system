@@ -10,16 +10,19 @@ const { DB, PORT, SECRET } = require('./config')
 // Initialize the application
 const app = exp()
 
-const startApp = () => {
-  // Connection with DB
-  connect(DB, { useFindAndModify: true, useUnifiedTopology: true, useNewUrlParser: true })
-  .then(() => success({ message: `Connected with database: ${DB}`, badge: true }))
-  .catch(err => error({ message: `Unable to connect with database: ${err}`, badge: true }))
+const startApp = async () => {
+  try {
 
-  app.listen(PORT, () => success({ 
-    message: `Server started on PORT: ${PORT}`, 
-    badge: true 
-  }))
+    // Connection with DB
+    await connect(DB, { useFindAndModify: true, useUnifiedTopology: true, useNewUrlParser: true })
+    success({ message: `Connected with database: ${DB}`, badge: true })
+    
+    // Application Server
+    app.listen(PORT, () => success({ message: `Server started on PORT: ${PORT}`, badge: true }))
+
+  } catch (err) {
+    error({ message: `Unable to connect with database: ${err}`, badge: true })
+  }
 }
 
 // Call function
