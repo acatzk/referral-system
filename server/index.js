@@ -10,6 +10,10 @@ const { DB, PORT, SECRET } = require('./config')
 // Initialize the application
 const app = exp()
 
+// Middlewares
+app.use(cors())
+app.use(bp.json())
+
 const startApp = async () => {
   try {
 
