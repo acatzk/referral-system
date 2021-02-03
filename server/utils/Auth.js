@@ -128,4 +128,18 @@ const validateEmail = async email => {
  */
 const auth = passport.authenticate('jwt', { session: false })
 
-module.exports = { auth, login, registration }
+/**
+ * @DESC Show only public data
+ */
+const serializeUser = user => {
+  return {
+    _id: user._id,
+    name: user.name,
+    email: user.email,
+    username: user.username,
+    createdAt: user.createdAt,
+    updatedAt: user.updatedAt
+  }
+}
+
+module.exports = { auth, login, registration, serializeUser }
