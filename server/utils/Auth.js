@@ -142,4 +142,12 @@ const serializeUser = user => {
   }
 }
 
-module.exports = { auth, login, registration, serializeUser }
+/**
+ * @DESC Check role middlware
+ */
+const checkRole = roles = (req, res, next) => 
+  !roles.includes(req.user.role)
+    ? res.status(401).json('Unauthorized')
+    : next()
+
+module.exports = { auth, login, checkRole, registration, serializeUser }
