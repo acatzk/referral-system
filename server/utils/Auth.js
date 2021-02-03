@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { SECRET } = require('./../config')
+const passport = require('passport')
 const User = require('./../models/User')
+const { SECRET } = require('./../config')
 
 /**
  * @DESC To register the user
@@ -122,4 +123,9 @@ const validateEmail = async email => {
   return user ? false : true
 }
 
-module.exports = { login, registration }
+/**
+ * @DESC Passport middlware
+ */
+const auth = passport.authenticate('jwt', { session: false })
+
+module.exports = { auth, login, registration }

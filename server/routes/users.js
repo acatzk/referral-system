@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { login, registration } = require('./../utils/Auth')
+const { auth, login, registration } = require('./../utils/Auth')
 
 // User registration route
 router.post('/register-user', async (req, res) => {
@@ -29,6 +29,12 @@ router.post('/login-admin', async (req, res) => {
 // Superadmin login route
 router.post('/login-super-admin', async (req, res) => {
   await login(req.body, 'superadmin', res)
+})
+
+
+// Profile route
+router.get('/profile', auth, async (req, res) => {
+  return res.json("Hello baby")
 })
 
 module.exports = router
