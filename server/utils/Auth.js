@@ -50,13 +50,13 @@ const userRegistration = async (userDetails, role, res) => {
   }
 }
 
-const validateUsername = username => {
-  let user = User.findOne({ username })
+const validateUsername = async username => {
+  let user = await User.findOne({ username })
   return user ? false : true
 }
 
-const validateEmail = email => {
-  let user = User.findOne({ email })
+const validateEmail = async email => {
+  let user = await User.findOne({ email })
   return user ? false : true
 }
 
