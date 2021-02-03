@@ -9,7 +9,7 @@ const userRegistration = async (userDetails, role, res) => {
   try {
     // validate username
     let usernameNotTaken = await(validateUsername(userDetails.username))
-    if (usernameNotTaken) {
+    if (!usernameNotTaken) {
       return res.status(400).json({
         message: `Username is already taken.`,
         success: false
@@ -17,7 +17,7 @@ const userRegistration = async (userDetails, role, res) => {
     }
 
     // validate email
-    let emailNotRegistered = await(validateEmail(userDetails, email))
+    let emailNotRegistered = await(validateEmail(userDetails.email))
     if (!emailNotRegistered) {
       return res.status(400).json({
         message: `Email is already taken.`,
