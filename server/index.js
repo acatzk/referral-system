@@ -14,6 +14,9 @@ const app = exp()
 app.use(cors())
 app.use(bp.json())
 
+// User route middleware
+app.use('/api/users', require('./routes/users'))
+
 const startApp = async () => {
   try {
 
