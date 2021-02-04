@@ -5,19 +5,40 @@
         <div class="mt-5 flex-shrink-0 flex justify-center">
           <img class="h-72" src="~/assets/images/logo.png" alt="avatar" />
         </div>
-        <form class="py-8 space-y-2">
+        <form @submit.prevent="onLogin" class="py-8 space-y-2">
           <div class="space-y-4">
             <div class="space-y-2">
-              <label class="text-sm text-gray-600">Email / Slot Code</label>
-              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200 focus:border-gray-100" 
-                      placeholder="Enter Email" 
-                      type="text" />
+              <div class="relative">
+                <label class="text-sm text-gray-600">Email / Slot Code</label>
+                <input  class="text-sm w-full py-2 border border-gray-300 rounded focus:outline-none pl-4 pr-7 focus:ring-2 transition ease-in-out duration-200 focus:border-gray-100" 
+                        placeholder="Enter Email" 
+                        type="text" 
+                        v-model="user.email"
+                        :class="submitted && $v.user.email.$error ? 'is-invalid' : 'shadow-inner focus:ring-green-400'" />
+                <div v-if="submitted && $v.user.email.$error" class="absolute right-2 top-8 text-red-500 flex items-center">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                </div>
+              </div>
+              <div v-if="submitted && $v.user.email.$error" class="invalid-feedback">
+                <span v-if="!$v.user.email.required">Email is required</span>
+                <span v-if="!$v.user.email.email">Email is invalid</span>
+              </div>
             </div>
             <div class="space-y-2">
-              <label class="text-sm text-gray-600">Password</label>
-              <input  class="text-sm w-full py-2 border border-gray-300 rounded shadow-inner focus:outline-none pl-4 focus:ring-2 focus:ring-green-400 transition ease-in-out duration-200 focus:border-gray-100" 
-                      placeholder="Enter Password" 
-                      type="password" />
+              <div class="relative">
+                <label class="text-sm text-gray-600">Password</label>
+                <input  class="text-sm w-full py-2 border border-gray-300 rounded focus:outline-none pl-4 pr-7 focus:ring-2 transition ease-in-out duration-200 focus:border-gray-100" 
+                        placeholder="Enter Password" 
+                        type="password" 
+                        v-model="user.password"
+                        :class="submitted && $v.user.password.$error ? 'is-invalid' : 'shadow-inner focus:ring-green-400'" />
+                <div v-if="submitted && $v.user.password.$error" class="absolute right-2 top-8 text-red-500 flex items-center">
+                  <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd" /></svg>
+                </div>
+              </div>
+              <div v-if="submitted && $v.user.password.$error" class="invalid-feedback">
+                <span v-if="!$v.user.password.required">Password is required</span>
+              </div>
             </div>
           </div>
           <div>
@@ -41,12 +62,36 @@
 </template>
 
 <script>
+  import { email, required } from 'vuelidate/lib/validators'
   export default {
     head: {
       title: 'Login - Grace wealthness'
     },
+    data () {
+      return {
+        user: {
+          email: '',
+          password: ''
+        },
+        submitted: false
+      }
+    },
+    validations: {
+      user: {
+        email: { required, email },
+        password: { required }
+      }
+    },
     methods: {
       onLogin () {
+        this.submitted = true
+
+        // stop here if form is invalid
+        this.$v.$touch();
+        if (this.$v.$invalid) {
+            return;
+        }
+
         this.$router.push('/member')
       }
     }
