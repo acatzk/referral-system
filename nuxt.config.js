@@ -1,6 +1,6 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
-  mode: 'spa',
+  mode: 'universal',
   head: {
     title: 'Grace wealthness',
     meta: [
