@@ -59,13 +59,13 @@ const registration = async (userDetails, role, res) => {
  * (ADMIN, SUPER_ADMIN, USER) 
  */
 const login = async (credentials, role, res) => {
-  let { username, password } = credentials
+  let { email, password } = credentials
   
   // check if username is in the database
-  const user = await User.findOne({ username })
+  const user = await User.findOne({ email })
   if (!user) {
     return res.status(404).json({
-      message: `Username is not found. Invalid login credentials. `,
+      message: `Email is not found. Invalid login credentials. `,
       success: false
     })
   }
