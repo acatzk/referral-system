@@ -11,7 +11,6 @@
               <div class="relative">
                 <label class="text-sm text-gray-600">Email / Slot Code</label>
                 <input  class="text-sm w-full py-2 border border-gray-300 rounded focus:outline-none pl-4 pr-7 focus:ring-2 transition ease-in-out duration-200 focus:border-gray-100" 
-                        placeholder="Enter Email" 
                         type="text" 
                         v-model="user.email"
                         :class="submitted && $v.user.email.$error ? 'is-invalid' : 'focus:ring-green-400'" />
@@ -26,7 +25,6 @@
               <div class="relative">
                 <label class="text-sm text-gray-600">Password</label>
                 <input  class="text-sm w-full py-2 border border-gray-300 rounded focus:outline-none pl-4 pr-7 focus:ring-2 transition ease-in-out duration-200 focus:border-gray-100" 
-                        placeholder="Enter Password" 
                         type="password" 
                         v-model="user.password"
                         :class="submitted && $v.user.password.$error ? 'is-invalid' : 'focus:ring-green-400'" />
