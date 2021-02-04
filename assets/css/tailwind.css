@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .is-invalid {
+    @apply ring-2 ring-red-400 focus:ring-red-400 border-0;
+  }
+  .invalid-feedback {
+    @apply text-xs text-red-500;
+  }
+}
