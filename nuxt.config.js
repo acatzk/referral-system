@@ -23,6 +23,10 @@ export default {
     {
       src: '~/plugins/vue2-perfect-scrollbar.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/vuelidate.js',
+      mode: 'client'
     }
   ],
 
