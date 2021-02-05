@@ -1,6 +1,6 @@
 <template>
-  <div class="flex h-screen py-0 sm:py-6 overflow-auto">
-    <div class="container m-auto max-w-none px-6 sm:max-w-md h-full sm:h-auto bg-white rounded-none sm:rounded-lg shadow">
+  <div class="flex min-h-screen py-0 sm:py-6">
+    <div class="container mx-auto max-w-none px-6 sm:max-w-md  bg-white rounded-none sm:rounded-lg shadow">
       <form @submit.prevent="onRegister" class="py-8 space-y-4">
         <div class="space-y-2">
           <!-- Full name -->
