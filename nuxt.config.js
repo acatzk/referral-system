@@ -27,6 +27,10 @@ export default {
     {
       src: '~/plugins/vuelidate.js',
       mode: 'client'
+    },
+    {
+      src: '~/plugins/vt-notifications.js',
+      mode: 'client'
     }
   ],
 
