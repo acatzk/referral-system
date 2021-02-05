@@ -1,6 +1,9 @@
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   mode: 'universal',
+  loading: {
+    color: 'green'
+  },
   head: {
     title: 'Grace wealthness',
     meta: [
