@@ -58,10 +58,11 @@ export default {
     strategies: {
       local: {
         endpoints: {
-          login: { url: `/api/auth/login-user`, method: 'post' },
-          logout: { url: `/api/auth/logout-user`, method: 'post' },
-          user: { url: `/api/auth/profile`, method: 'get'}
-        }
+          login: { url: `/api/auth/login-user`, method: 'post', propertyName: 'token' },
+          logout: { url: `/api/auth/logout-user`, method: 'delete' },
+          user: { url: `/api/auth/profile`, method: 'get', propertyName: 'data.attributes' }
+        },
+        tokenType: ''
       }
     }
   },
