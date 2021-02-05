@@ -9617,6 +9617,11 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
+vt-notifications@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/vt-notifications/-/vt-notifications-0.3.1.tgz#e826a44185c576df55d6c52a86a2331139931012"
+  integrity sha512-9d2bordmQULWrS2VLZqA4XclunjAM5llZagYVRJI2usF3bQEYvN/fg1V7fzhqYwAqbaf4/z7OwJBsXLasBZ8zw==
+
 vue-client-only@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/vue-client-only/-/vue-client-only-2.0.0.tgz"
