@@ -23,7 +23,7 @@ router.post('/register-super-admin', async (req, res) => {
 })
 
 // User login route
-router.post('/login-user', async (req, res) => {
+router.post('/login', async (req, res) => {
   await login(req.body, 'user', res)
 })
 
@@ -38,7 +38,7 @@ router.post('/login-super-admin', async (req, res) => {
 })
 
 // Profile route
-router.get('/profile', auth, checkRole(['user']), async (req, res) => {
+router.get('/user', auth, async (req, res) => {
   return res.json(serializeUser(req.user))
 })
 
