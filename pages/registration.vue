@@ -16,7 +16,7 @@
             <div v-if="submitted && $v.user.name.$error" class="invalid-feedback">
               <ul class="flex flex-col">
                 <li v-if="!$v.user.name.required">Name is required</li>
-                <li v-if="!$v.user.name.minLength">Name must be at least 3 characters</li>
+                <li v-if="!$v.user.name.minLength">Must have 3+ characters</li>
               </ul>
             </div>
           </div>
@@ -63,8 +63,10 @@
               <ErrorIcon v-if="submitted && $v.user.contact.$error" />
             </div>
             <div v-if="submitted && $v.user.contact.$error" class="invalid-feedback">
-              <span v-if="!$v.user.contact.required">Contact number is required</span>
-              <span v-if="!$v.user.contact.numeric">Must be a valid number</span>
+              <ul class="flex flex-col">
+                <li v-if="!$v.user.contact.required">Contact number is required</li>
+                <li v-if="!$v.user.contact.numeric">Must be a valid number</li>
+              </ul>
             </div>
           </div>
           <!-- Email -->
@@ -96,7 +98,10 @@
             </div>
             <div v-if="submitted && $v.user.username.$error" class="invalid-feedback">
               <span v-if="!$v.user.username.required">Username is required</span>
-              <span v-if="!$v.user.username.minLength">Username must be at least 4 characters</span>
+              <ul class="flex flex-col">
+                <li v-if="!$v.user.username.required">Username is required</li>
+                <li v-if="!$v.user.username.minLength">Must have 4+ characters</li>
+              </ul>
             </div>
           </div>
           <!-- Password -->
