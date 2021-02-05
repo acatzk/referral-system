@@ -47,15 +47,25 @@ export default {
     '@nuxtjs/auth-next'
   ],
 
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: `/api/auth/login-user`, method: 'post' },
+          logout: { url: `/api/auth/logout-user`, method: 'post' },
+          user: { url: `/api/auth/profile`, method: 'get'}
+        }
+      }
+    }
+  },
+
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
-  axios: {},
+  axios: {
+    baseURL: `http://localhost:5000`
+  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
-  },
-  
-  // Environment Variables
-  env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   }
+
 }
