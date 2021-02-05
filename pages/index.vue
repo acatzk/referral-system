@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen">
+  <div class="flex min-h-screen">
     <div class="container m-auto max-w-none sm:max-w-md h-screen sm:h-auto bg-white rounded-none sm:rounded-lg shadow">
       <div class="px-6 flex flex-col">
         <div class="mt-5 flex-shrink-0 flex justify-center">
@@ -7,6 +7,7 @@
         </div>
         <form @submit.prevent="onLogin" class="py-8 space-y-2">
           <div class="space-y-4">
+            <ToastNotification />
             <div class="space-y-2">
               <div class="relative">
                 <label class="text-sm text-gray-600">Email / Slot Code</label>
@@ -70,16 +71,18 @@
       title: 'Login - Grace wealthness'
     },
     components: {
-      ErrorIcon: () => import('~/components/ErrorIcon')
+      ErrorIcon: () => import('~/components/ErrorIcon'),
+      ToastNotification: () => import('~/components/ToastNotification')
     },
     data () {
       return {
         user: {
-          email: '',
-          password: ''
+          email: 'joshuaimalay@gmail.com',
+          password: 'ilusmdm123'
         },
         submitted: false,
-        isPassword: false
+        isPassword: false,
+        errors: []
       }
     },
     validations: {
@@ -89,16 +92,22 @@
       }
     },
     methods: {
-      onLogin () {
-        this.submitted = true
+      async onLogin () {
+        try {
+          this.submitted = true
+          this.$v.$touch();
+          if (this.$v.$invalid) return;
 
-        // stop here if form is invalid
-        this.$v.$touch();
-        if (this.$v.$invalid) {
-            return;
+          await this.$auth.loginWith('local', { 
+            data: this.user 
+          })
+          
+          this.$notify({ group: "success", title: "Success", description: `Thanks for signing in, ${this.$auth.user.name}` }, 4000)
+          this.$router.push('/member')
+
+        } catch (error) {
+          this.$notify({ group: "error", title: "Opps!", description: error }, 4000) // 'There was an issue signing in. Please try again'
         }
-
-        this.$router.push('/member')
       }
     }
   }
