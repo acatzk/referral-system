@@ -19,7 +19,7 @@ app.use(passport.initialize())
 require('./middlewares/passport')(passport)
 
 // User route middleware
-app.use('/api/users', require('./routes/users'))
+app.use('/api/auth', require('./routes/users'))
 
 const startApp = async () => {
   try {
