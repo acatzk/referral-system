@@ -38,7 +38,7 @@ router.post('/login-super-admin', async (req, res) => {
 })
 
 // Profile route
-router.get('/profile', auth, async (req, res) => {
+router.get('/profile', auth, checkRole(['user']), async (req, res) => {
   return res.json(serializeUser(req.user))
 })
 
