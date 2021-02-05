@@ -55,21 +55,19 @@ export default {
   ],
 
   auth: {
-    strategies: {
+    strategies: {      
       local: {
         token: {
-          property: 'token',
-          required: true,
-          type: 'Bearer'
+          property: 'access_token',
         },
         user: {
-          property: 'user',
-          autoFetch: true
+          property: 'data',
+          autoFetch: false
         },
         endpoints: {
           login: { url: '/api/auth/login', method: 'post' },
           logout: { url: '/api/auth/logout', method: 'post' },
-          user: { url: '/api/auth/user', method: 'get' }
+          user: { url: '/api/auth/user', method: 'get', propertyName: false }
         }
       }
     }
