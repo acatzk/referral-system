@@ -77,8 +77,8 @@
     data () {
       return {
         user: {
-          email: 'joshuaimalay@gmail.com',
-          password: 'ilusmdm123'
+          email: '',
+          password: ''
         },
         submitted: false,
         isPassword: false,
@@ -100,15 +100,20 @@
 
           await this.$auth.loginWith('local', { 
             data: this.user 
+          }).then((response) => {
+            this.$auth.setUser(response.data)
+            this.$router.push('/member')
+          }).catch((error) => {
+            this.$notify({ group: "error", title: "Opps!", description: 'There was an issue signing in. Please try again' }, 4000)
           })
-          
-          this.$notify({ group: "success", title: "Success", description: `Thanks for signing in, ${this.$auth.user.name}` }, 4000)
-          this.$router.push('/member')
 
         } catch (error) {
-          this.$notify({ group: "error", title: "Opps!", description: error }, 4000) // 'There was an issue signing in. Please try again'
+          this.$notify({ group: "error", title: "Opps!", description: error }, 4000) 
         }
       }
+    },
+    mounted () {
+      console.log(this.$auth.user)
     }
   }
 </script>
