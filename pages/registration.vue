@@ -97,7 +97,6 @@
               <ErrorIcon v-if="submitted && $v.user.username.$error" />
             </div>
             <div v-if="submitted && $v.user.username.$error" class="invalid-feedback">
-              <span v-if="!$v.user.username.required">Username is required</span>
               <ul class="flex flex-col">
                 <li v-if="!$v.user.username.required">Username is required</li>
                 <li v-if="!$v.user.username.minLength">Must have 4+ characters</li>
@@ -226,9 +225,9 @@
 
         // stop here if form is invalid
         this.$v.$touch()
-        if (this.$v.$invalid) {
-            return;
-        }
+        if (this.$v.$invalid) return;
+
+        
 
         alert('Good Job!!')
       }
