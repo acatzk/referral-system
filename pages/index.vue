@@ -80,8 +80,8 @@
     data () {
       return {
         user: {
-          email: 'joshuaimalay@gmail.com',
-          password: 'ilusmdm123'
+          email: '',
+          password: ''
         },
         submitted: false,
         isLoading: false,
