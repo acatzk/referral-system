@@ -1,6 +1,7 @@
 <template>
   <div class="flex min-h-screen">
     <div class="container m-auto max-w-none sm:max-w-md h-screen sm:h-auto px-6 bg-white rounded-none sm:rounded-lg shadow">
+      <ToastNotification />
       <form @submit.prevent="onRegister" class="py-8 space-y-4">
         <div class="space-y-2">
           <!-- Full name -->
@@ -148,8 +149,10 @@
           </div>
         </div>
         <div class="space-y-2">
-          <button @click.prevent="onRegister" class="text-sm font-medium w-full bg-green-500 py-2 border-none text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 uppercase on ease-in-out duration-200">
-            Create account
+          <button @click.prevent="onRegister" 
+                  class="flex items-center justify-center text-sm font-medium w-full bg-green-500 py-2 border-none text-white rounded focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 uppercase on ease-in-out duration-200">
+            <span v-if="!isLoading">Create Account</span>
+              <Loading v-else :className="`w-5 h-5 text-white`" />
           </button>
           <nuxt-link to="/" @click.prevent class="block text-center text-sm font-medium w-full border border-green-500 py-2 text-green-500 rounded focus:ring-2 focus:ring-offset-2 focus:ring-green-500 uppercase hover:bg-green-50 focus:outline-none transiton ease-in-out duration-200">
             Back
@@ -168,7 +171,9 @@
       title: 'Registration - Grace wealthness'
     },
     components: {
-      ErrorIcon: () => import('~/components/ErrorIcon')
+      ErrorIcon: () => import('~/components/ErrorIcon'),
+      ToastNotification: () => import('~/components/ToastNotification'),
+      Loading: () => import('~/components/Loading')
     },
     data () {
       return {
@@ -184,7 +189,8 @@
           confirmPassword: ''
         },
         submitted: false,
-        isPassword: false
+        isPassword: false,
+        isLoading: false
       }
     },
     validations: {
@@ -215,22 +221,57 @@
       }
     },
     methods: {
+      
       countriesData () {
         countries.forEach((element) => {
           this.countries.push(element.nationality)
         })
       },
-      onRegister () {
-        this.submitted = true
 
-        // stop here if form is invalid
-        this.$v.$touch()
-        if (this.$v.$invalid) return;
+      async onRegister () {
+        try {
+          this.submitted = true
 
-        
+          this.$v.$touch()
+          if (this.$v.$invalid) return;
 
-        alert('Good Job!!')
+          this.isLoading = true
+          await this.$axios.post('/api/auth/register-user', this.user)
+            .then(() => {
+              this.isLoading = false
+              this.autoLogin()
+            })
+            .catch((e) => {
+              this.isLoading = false
+              let { message } = e.response.data
+              this.$notify({ group: "error", title: "Opps!", description: message }, 4000) 
+            })
+
+        } catch (error) {
+          this.isLoading = false
+          this.$notify({ group: "error", title: "Opps!", description: error }, 4000) 
+        }
+      },
+
+      async autoLogin () {
+        await this.$auth.loginWith('local', { data: this.user })
+          .then((response) => {
+            this.$auth.setUser(response.data)
+            this.clear()
+            this.$router.push('/member')
+          }).catch((e) => {
+            let { message } = e.response.data
+            this.$notify({ group: "error", title: "Opps!", description: message }, 4000) 
+          })
+      },
+
+      clear () {
+        this.user = {}
+        this.submitted = false,
+        this.isPassword = false,
+        this.isLoading = false
       }
+
     },
     created () {
       this.countriesData()
